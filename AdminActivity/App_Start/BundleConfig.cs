@@ -42,7 +42,7 @@ namespace AdminActivity
             bundles.UseCdn = true;
 
             //bundles.Add(new StyleBundle("~/Content/solar").Include("~/Content/Solar.css"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.min.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/Slate.css"));
 
             bundles.Add(new StyleBundle("~/Content/customcss").Include("~/Content/Site.css"));
 
