@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h1>Home</h1>
+
+<div id="calendar"></div>
+
+@section scripts{
+
+<script type="text/javascript">// <![CDATA[
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            theme: true,
+
+            defaultView: 'agendaDay',
+            editable: false,
+            events: "/home/getevents/"
+        });
+    });
+
+// ]]></script>
+
+}

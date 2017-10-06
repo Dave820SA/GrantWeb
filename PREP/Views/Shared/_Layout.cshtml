@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
-@*<html lang="en">*@
-<html>
+<html lang="en">
     <head>
    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.PREP</title>
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link href="~/favicon.ico" rel="Shortcut Icon" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,9 +10,10 @@
 
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-
     @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/fullcalendarcss")
     @Styles.Render("~/Content/customcss")
+
 </head>
 <body>
     <div class="container">
@@ -35,7 +35,7 @@
               <li class="active"><a href="~/Home/Index"><span class="fa fa-home fa-fw"></span>Home</a></li>
               <li><a href="~/Home/About">About</a></li>
               <li><a href="~/Home/Contact"><i class="fa fa-phone"></i>&nbsp;Contact</a></li>
-              
+             
             </ul>
            
           </div><!--/.nav-collapse -->
@@ -45,11 +45,11 @@
         <!-- Jumbotron -->
         <div class="jumbotron">
             <h1>
-                SAPD Grant Web
+                PREP
             </h1>
             <p class="lead">
-                Providing Scheduling, Daily Activity, Auditing & Administrative tools for SAPD Traffic
-                Grants.</p>
+                Scheduling & organizing Public Resource Educational Packages
+            </p>
             <p>
                 <a class="btn btn-lg btn-success" href="#" role="button">Get started</a></p>
         </div>
@@ -67,11 +67,14 @@
       </footer>
     </div>
     <!-- /container -->
+    @Scripts.Render("~/bundles/fullcalendarjs")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/moment")
+    
     @Scripts.Render("~/bundles/googlejquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    @Scripts.Render("~/bundles/moment")
-    @Scripts.Render("~/bundles/datepick")
+    
+   @* @Scripts.Render("~/bundles/datepick")*@
 </body>
 </html>

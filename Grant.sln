@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminActivity", "AdminActivity\AdminActivity.csproj", "{1A2D84C4-EDBE-4FAA-8B3D-9A5E02DD0A92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PREP", "PREP\PREP.csproj", "{C28148BA-EB4A-4952-8658-4D3397716148}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BBA33294-A54D-4BF4-8D6C-67EF4B94D6D7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +20,10 @@ Global
 		{1A2D84C4-EDBE-4FAA-8B3D-9A5E02DD0A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A2D84C4-EDBE-4FAA-8B3D-9A5E02DD0A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A2D84C4-EDBE-4FAA-8B3D-9A5E02DD0A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28148BA-EB4A-4952-8658-4D3397716148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28148BA-EB4A-4952-8658-4D3397716148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28148BA-EB4A-4952-8658-4D3397716148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28148BA-EB4A-4952-8658-4D3397716148}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
