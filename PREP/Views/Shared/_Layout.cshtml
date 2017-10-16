@@ -1,64 +1,67 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+<html>
     <head>
    <meta charset="utf-8" />
-    <title>@ViewBag.PREP</title>
+    <title>@ViewBag.Title</title>
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link href="~/favicon.ico" rel="Shortcut Icon" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    @Styles.Render("~/Content/font-awesome")
 
     @Styles.Render("~/Content/bootstrap")
-    @Styles.Render("~/Content/fullcalendarcss")
-    @Styles.Render("~/Content/customcss")
-
+    @Styles.Render("~/Content/css")
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print"/>
 </head>
 <body>
     <div class="container">
         <div class="masthead">
-            @*<h3 class="text-muted">SAPD Activity Application</h3>*@
             <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Grant Web</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="~/Home/Index"><span class="fa fa-home fa-fw"></span>Home</a></li>
-              <li><a href="~/Home/About">About</a></li>
-              <li><a href="~/Home/Contact"><i class="fa fa-phone"></i>&nbsp;Contact</a></li>
-             
-            </ul>
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">PREP Web</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="~/Home/Index"><span class="fa fa-home fa-fw"></span>Home</a></li>
+                            <li><a href="~/Calendar/Index"><i class="fa fa-bars"></i>&nbsp;Event Calendar </a></li>
+                            <li><a href="~/Home/Contact"><i class="fa fa-phone"></i>&nbsp;Contact</a></li>
+              
+                        </ul>
            
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
         </div>
         <!-- Jumbotron -->
         <div class="jumbotron">
             <h1>
-                PREP
+                PREP Web
             </h1>
             <p class="lead">
-                Scheduling & organizing Public Resource Educational Packages
-            </p>
+                Providing Scheduling, Daily Activity, Auditing & Administrative tools for SAPD Traffic
+                Grants.</p>
             <p>
                 <a class="btn btn-lg btn-success" href="#" role="button">Get started</a></p>
         </div>
         <div class="container">
             <div class="row">
-                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">*@
+                <div id="body">
+                    <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
-                <hr />
-                @* </div>*@
+            </section>
+                </div>
+                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">*@ @*@RenderBody()
+                <hr />*@ @* </div>*@
             </div>
         </div>
         <!-- Site footer -->
@@ -67,14 +70,18 @@
       </footer>
     </div>
     <!-- /container -->
-    @Scripts.Render("~/bundles/fullcalendarjs")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/moment")
-    
     @Scripts.Render("~/bundles/googlejquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/fullcalendar")
+
+     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>*@
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>*@
+
     @RenderSection("scripts", required: false)
     
-   @* @Scripts.Render("~/bundles/datepick")*@
+    @*@Scripts.Render("~/bundles/datepick")*@
 </body>
+   
 </html>

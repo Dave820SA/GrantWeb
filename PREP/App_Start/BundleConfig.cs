@@ -11,7 +11,10 @@ namespace PREP
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/googlejquery", "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                       "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.js").Include(
+                       "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -31,29 +34,22 @@ namespace PREP
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
                         "~/Scripts/moment.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/datepick").Include(
-                        "~/Scripts/bootstrap-datetimepicker.min.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/datepick").Include(
+            //            "~/Scripts/bootstrap-datetimepicker.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerys").Include(
                         "~/Scripts/jquery-1.9.1.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
-                     "~/Scripts/jquery-ui-1.12.1.min.js",
-                     "~/Scripts/fullcalendar.min.js"));
 
 
-            BundleTable.EnableOptimizations = true;
-            bundles.UseCdn = true;
+            bundles.Add(new StyleBundle("~/Content/font-awesome","http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"));
 
-            //Calendar css file
-            bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
-                     "~/Content/themes/jquery.ui.all.css",
-                     "~/Content/fullcalendar.css"));
+            bundles.Add(new StyleBundle("~/Content/fullcalendar", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css"));
 
-            //bundles.Add(new StyleBundle("~/Content/solar").Include("~/Content/Solar.css"));
+            bundles.Add(new StyleBundle("~/Content/fullcalendarprint", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.print.css"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/Slate.css"));
-
-            bundles.Add(new StyleBundle("~/Content/customcss").Include("~/Content/Site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -68,6 +64,12 @@ namespace PREP
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+
+
+            BundleTable.EnableOptimizations = true;
+            bundles.UseCdn = true;
+
         }
     }
 }

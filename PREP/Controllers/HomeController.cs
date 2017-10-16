@@ -15,12 +15,24 @@ namespace PREP.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
 
-            return View();
-        }
+        //public JsonResult GetEvents()
+        //{
+        //    //using (MyDatabaseEntities dc = new MyDatabaseEntities())
+        //    using (SAPDActivityEntities dc = new SAPDActivityEntities())
+        //    {
+        //        var events = dc.Prep_Event.ToList();
+        //        return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        //    }
+        //}
+
+
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your app description page.";
+
+        //    return View();
+        //}
 
         public ActionResult Contact()
         {

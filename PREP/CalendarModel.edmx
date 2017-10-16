@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SAPDActivityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SAPDActivityModelStoreContainer">
+          <EntitySet Name="Prep_Event" EntityType="SAPDActivityModel.Store.Prep_Event" store:Type="Tables" Schema="dbo" Table="Prep.Event" />
+        </EntityContainer>
+        <EntityType Name="Prep_Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" />
+          <Property Name="Presentation" Type="int" />
+          <Property Name="Exposure" Type="int" />
+          <Property Name="ComEvent" Type="int" />
+          <Property Name="Attend" Type="int" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="EnteredBy" Type="int" />
+          <Property Name="EnteredDate" Type="datetime" />
+          <Property Name="IsFullDay" Type="bit" Nullable="false" />
+          <Property Name="ThemeColor" Type="varchar" MaxLength="10" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAPDActivityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SAPDActivityEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Prep_Event" EntityType="SAPDActivityModel.Prep_Event" />
+        </EntityContainer>
+        <EntityType Name="Prep_Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" />
+          <Property Name="Presentation" Type="Int32" />
+          <Property Name="Exposure" Type="Int32" />
+          <Property Name="ComEvent" Type="Int32" />
+          <Property Name="Attend" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EnteredBy" Type="Int32" />
+          <Property Name="EnteredDate" Type="DateTime" />
+          <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
+          <Property Name="ThemeColor" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAPDActivityModelStoreContainer" CdmEntityContainer="SAPDActivityEntities">
+          <EntitySetMapping Name="Prep_Event">
+            <EntityTypeMapping TypeName="SAPDActivityModel.Prep_Event">
+              <MappingFragment StoreEntitySet="Prep_Event">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Presentation" ColumnName="Presentation" />
+                <ScalarProperty Name="Exposure" ColumnName="Exposure" />
+                <ScalarProperty Name="ComEvent" ColumnName="ComEvent" />
+                <ScalarProperty Name="Attend" ColumnName="Attend" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+                <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+                <ScalarProperty Name="ThemeColor" ColumnName="ThemeColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CalendarModel">
+        <EntityTypeShape EntityType="SAPDActivityModel.Prep_Event" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
