@@ -53,9 +53,15 @@ namespace PREP.Controllers
                 }
                 dc.SaveChanges();
                 status = true;
+
+                var events = dc.Prep_Event.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = new { status = status } };
+            
+            
+            //return new JsonResult { Data = new { status = status } };
         }
+
 
         [HttpPost]
         public JsonResult DeleteEvent(int eventID)

@@ -11,8 +11,12 @@
 
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/css")
+
+    @*@Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/fullcalendarprint")*@
+     @*<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print"/>*@
    
 
 </head>
@@ -60,8 +64,8 @@
      @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/googlejquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/moment")
-    @Scripts.Render("~/bundles/fullcalendar")
+    @*@Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/fullcalendar")*@
     @RenderSection("scripts", required: false)
   
 </body>

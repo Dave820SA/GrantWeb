@@ -44,11 +44,13 @@ namespace PREP
 
             bundles.Add(new StyleBundle("~/Content/font-awesome","http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/fullcalendar", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/fullcalendarprint", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.print.css"));
+            //bundles.Add(new StyleBundle("~/Content/fullcalendar", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/Slate.css"));
+            //bundles.Add(new StyleBundle("~/Content/fullcalendarprint", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.print.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/Slate.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
