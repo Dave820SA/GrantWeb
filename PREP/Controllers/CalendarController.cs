@@ -22,7 +22,9 @@ namespace PREP.Controllers
             using (SAPDActivityEntities dc = new SAPDActivityEntities())
             {
                 var events = dc.Prep_Event.ToList();
-                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return Json(events, JsonRequestBehavior.AllowGet);
+
+                //return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -53,13 +55,8 @@ namespace PREP.Controllers
                 }
                 dc.SaveChanges();
                 status = true;
-
-                var events = dc.Prep_Event.ToList();
-                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            
-            
-            //return new JsonResult { Data = new { status = status } };
+            return new JsonResult { Data = new { status = status } };
         }
 
 

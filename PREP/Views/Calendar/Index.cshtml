@@ -99,9 +99,12 @@
 
     <script>
         $(document).ready(function () {
+
+
             var events = [];
             var selectedEvent = null;
             FetchEventAndRenderCalendar();
+
             function FetchEventAndRenderCalendar() {
                 events = [];
                 $.ajax({
@@ -146,9 +149,9 @@
                         selectedEvent = calEvent;
                         $('#myModal #eventTitle').text(calEvent.title);
                         var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("MMM-DD-YYYY HH:mm a")));
+                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("MM/DD/YYYY HH:mm a")));
                         if (calEvent.end != null) {
-                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("MMM-DD-YYYY HH:mm a")));
+                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("MM/DD/YYYY HH:mm a")));
                         }
                         $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
                         $('#myModal #pDetails').empty().html($description);
@@ -185,29 +188,29 @@
                 })
             }
 
-            $('#btnEdit').click(function () {
-                //Open modal dialog for edit event
-                openAddEditForm();
-            })
-            $('#btnDelete').click(function () {
-                if (selectedEvent != null && confirm('Are you sure?')) {
-                    $.ajax({
-                        type: "POST",
-                        url: '/calendar/DeleteEvent',
-                        data: { 'eventID': selectedEvent.eventID },
-                        success: function (data) {
-                            if (data.status) {
-                                //Refresh the calender
-                                FetchEventAndRenderCalendar();
-                                $('#myModal').modal('hide');
-                            }
-                        },
-                        error: function () {
-                            alert('Failed');
-                        }
-                    })
-                }
-            })
+//            $('#btnEdit').click(function () {
+//                //Open modal dialog for edit event
+//                openAddEditForm();
+//            })
+//            $('#btnDelete').click(function () {
+//                if (selectedEvent != null && confirm('Are you sure?')) {
+//                    $.ajax({
+//                        type: "POST",
+//                        url: '/calendar/DeleteEvent',
+//                        data: { 'eventID': selectedEvent.eventID },
+//                        success: function (data) {
+//                            if (data.status) {
+//                                //Refresh the calender
+//                                FetchEventAndRenderCalendar();
+//                                $('#myModal').modal('hide');
+//                            }
+//                        },
+//                        error: function () {
+//                            alert('Failed');
+//                        }
+//                    })
+//                }
+//            })
 
             $('#dtp1,#dtp2').datetimepicker({
                 format: 'MM/DD/YYYY HH:mm A'
