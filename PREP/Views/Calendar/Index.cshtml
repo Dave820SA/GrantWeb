@@ -29,49 +29,70 @@
 </div>
 
  
-<div id="myModalSave" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+<!-- Modal -->
+<div class="modal fade" id="myModalSave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
+            <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Save Event</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">
+                    Save Event</h4>
             </div>
+            <!-- Modal Body -->
             <div class="modal-body">
-                <form class="col-md-12 form-horizontal">
-                    <input type="hidden" id="hdEventID" value="0" />
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" id="txtSubject" class="form-control"/>
+                <form class="form-horizontal" role="form">
+                <input type="hidden" id="hdEventID" value="0" />
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="txtSubject">
+                        Event Subject</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="txtSubject" placeholder="Subject" />
                     </div>
-                    <div class="form-group">
-                        <label>Start</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="dtp1">
+                        Start</label>
+                    <div class="col-sm-9">
                         <div class="input-group date" id="dtp1">
                             <input type="text" id="txtStart" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="fa fa-calendar"></span>
-                            </span>
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                         </div>
                     </div>
-                    <div class="form-group">
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">
-                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                            <label>
+                                <input type="checkbox" id="chkIsFullDay" checked="checked" />
+                                Is Full Day event</label>
                         </div>
                     </div>
-                    <div class="form-group" id="divEndDate" style="display:none">
-                        <label>End</label>
+                </div>
+                <div class="form-group" id="divEndDate" style="display: none">
+                    <label class="col-sm-3 control-label" for="dtp2">
+                        End</label>
+                    <div class="col-sm-9">
                         <div class="input-group date" id="dtp2">
                             <input type="text" id="txtEnd" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="fa fa-calendar"></span>
-                            </span>
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Description</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="txtDescription">
+                        Description</label>
+                    <div class="col-sm-9">
                         <textarea id="txtDescription" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Theme Color</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="ddThemeColor">
+                        Theme Color</label>
+                    <div class="col-sm-9">
                         <select id="ddThemeColor" class="form-control">
                             <option value="">Default</option>
                             <option value="red">Red</option>
@@ -80,21 +101,26 @@
                             <option value="green">Green</option>
                         </select>
                     </div>
-                    <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
                 </form>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" id="btnSave" class="btn btn-success">
+                    Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
             </div>
         </div>
     </div>
 </div>
  
+ <span style="font-weight: bold; font-style: italic; color: #0000FF"></span>
 
 @section Scripts{
    
     <script>
         $(document).ready(function () {
-
-
             var events = [];
             var selectedEvent = null;
             FetchEventAndRenderCalendar();
@@ -143,11 +169,12 @@
                         selectedEvent = calEvent;
                         $('#myModal #eventTitle').text(calEvent.title);
                         var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("MM/DD/YYYY HH:mm a")));
+                        
+                        $description.append($('<p/>').html('<span style="font-weight: bold; font-style: italic; color: #0000FF">Start:&nbsp;&nbsp;</span>' + calEvent.start.format("MM/DD/YYYY HH:mm a")));
                         if (calEvent.end != null) {
-                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("MM/DD/YYYY HH:mm a")));
+                            $description.append($('<p/>').html('<span style="font-weight: bold; font-style: italic; color: #0000FF">End:&nbsp;&nbsp;</span>' + calEvent.end.format("MM/DD/YYYY HH:mm a")));
                         }
-                        $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                        $description.append($('<p/>').html('<span style="font-weight: bold; font-style: italic; color: #0000FF">Description:&nbsp;&nbsp;</span>' + calEvent.description));
                         $('#myModal #pDetails').empty().html($description);
 
                         $('#myModal').modal();

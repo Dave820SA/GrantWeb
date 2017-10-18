@@ -4,10 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SAPDActivityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SAPDActivityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SAPDActivityModelStoreContainer">
           <EntitySet Name="Prep_Event" EntityType="SAPDActivityModel.Store.Prep_Event" store:Type="Tables" Schema="dbo" Table="Prep.Event" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Prep_Event">
           <Key>
             <PropertyRef Name="EventID" />
@@ -27,14 +27,13 @@
           <Property Name="IsFullDay" Type="bit" Nullable="false" />
           <Property Name="ThemeColor" Type="varchar" MaxLength="10" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SAPDActivityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="SAPDActivityEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Prep_Event" EntityType="SAPDActivityModel.Prep_Event" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Prep_Event">
           <Key>
             <PropertyRef Name="EventID" />
@@ -54,7 +53,7 @@
           <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
           <Property Name="ThemeColor" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -80,7 +79,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -102,7 +101,7 @@
     <Diagrams>
       <Diagram Name="CalendarModel">
         <EntityTypeShape EntityType="SAPDActivityModel.Prep_Event" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

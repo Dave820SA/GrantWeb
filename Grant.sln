@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BBA332
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PREP", "PREP\PREP.csproj", "{DD011038-8C06-4034-BBCE-80CCAFE48ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PREP2", "PREP2\PREP2.csproj", "{FC4CCC0F-86BE-489A-85D1-AB7CDE87D24D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,10 +24,6 @@ Global
 		{DD011038-8C06-4034-BBCE-80CCAFE48ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD011038-8C06-4034-BBCE-80CCAFE48ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD011038-8C06-4034-BBCE-80CCAFE48ADA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC4CCC0F-86BE-489A-85D1-AB7CDE87D24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC4CCC0F-86BE-489A-85D1-AB7CDE87D24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC4CCC0F-86BE-489A-85D1-AB7CDE87D24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC4CCC0F-86BE-489A-85D1-AB7CDE87D24D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

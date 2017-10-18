@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace PREP.Controllers
 {
     public class CalendarController : Controller
@@ -16,18 +17,16 @@ namespace PREP.Controllers
             return View();
         }
 
+
         public JsonResult GetEvents()
         {
-            
+
             using (SAPDActivityEntities dc = new SAPDActivityEntities())
             {
                 var events = dc.Prep_Event.ToList();
                 return Json(events, JsonRequestBehavior.AllowGet);
-
-                //return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
-
 
         [HttpPost]
         public JsonResult SaveEvent(Prep_Event e)
