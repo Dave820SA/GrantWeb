@@ -1,0 +1,218 @@
+﻿@model PREP.Models.PrepEvent
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <form class="form-horizontal">
+    <div class="Container">
+        <div class="row">
+            <div class="col-sm-5">
+                <fieldset class="scheduler-border">
+                    @*<h5 class="text-warning">
+                        You should not edit the SOP path!</h5>
+                    <br />*@
+                    <div class="form-group col-xs-12">
+                        @Html.HiddenFor(model => model.EventID)
+                        <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.Subject, new { @class = "control-label" })</strong>
+                        <div>
+                            
+                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.Description, new { @class = "control-label" })</strong>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", cols = "20", rows = "7" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.Start, new { @class = "control-label" })</strong>
+              
+                        @*@Html.TextBoxFor(model => model.Start, new { @class = "form-control" })*@
+                        @Html.TextBoxFor(model => model.Start, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+                        @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.End, new { @class = "control-label" })</strong>
+              
+                        @Html.TextBoxFor(model => model.End, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
+                    </div>
+
+                    @*<div class="form-group col-xs-12">
+                        <strong style="font-size: 1.2em">@Html.LabelFor(model => model.StartDate, new { @class = "control-label" })</strong>
+                        @Html.TextBoxFor(model => model.StartDate,"{0:MM/dd/yyyy}", new {  @class = "form-control" })
+                        
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    </div>*@
+
+                    <div class="form-group col-xs-12">
+                        <input type="submit" class="btn btn-primary" value="Update" />
+                    </div>
+                </fieldset>
+                <strong style="font-size: 1.5em"> @Html.ActionLink("Back to List", "Index")</strong>
+            </div>
+        </div>
+    </div>
+    </form>
+    
+}
+
+
+
+@section Scripts {
+
+   <script type="text/javascript">
+       $(document).ready(function () {
+
+        $(function () { // will trigger when the document is ready
+           $('.datepicker').datepicker(); //Initialise any date pickers
+       });
+
+
+       });
+
+
+      
+    </script>
+          
+
+}
+
+@*<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PrepEvent</legend>
+
+        @Html.HiddenFor(model => model.EventID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Start)
+            @Html.ValidationMessageFor(model => model.Start)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.End)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.End)
+            @Html.ValidationMessageFor(model => model.End)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Presentation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Presentation)
+            @Html.ValidationMessageFor(model => model.Presentation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Exposure)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Exposure)
+            @Html.ValidationMessageFor(model => model.Exposure)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ComEvent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ComEvent)
+            @Html.ValidationMessageFor(model => model.ComEvent)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Attend)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Attend)
+            @Html.ValidationMessageFor(model => model.Attend)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Notes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Notes)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EnteredBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EnteredBy)
+            @Html.ValidationMessageFor(model => model.EnteredBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EnteredDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EnteredDate)
+            @Html.ValidationMessageFor(model => model.EnteredDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsFullDay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsFullDay)
+            @Html.ValidationMessageFor(model => model.IsFullDay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThemeColor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThemeColor)
+            @Html.ValidationMessageFor(model => model.ThemeColor)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+*@

@@ -1,0 +1,29 @@
+﻿@model PREP.Models.AssetType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AssetType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Asset)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Asset)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PicturePath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PicturePath)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.AssetTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

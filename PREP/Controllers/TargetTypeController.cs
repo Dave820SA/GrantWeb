@@ -9,33 +9,33 @@ using PREP.Models;
 
 namespace PREP.Controllers
 {
-    public class EventController : Controller
+    public class TargetTypeController : Controller
     {
-        private SAPDActivityEntities db = new SAPDActivityEntities();
+        private PrepEntities db = new PrepEntities();
 
         //
-        // GET: /Event/
+        // GET: /TargetType/
 
         public ActionResult Index()
         {
-            return View(db.Prep_Event.ToList());
+            return View(db.TargetTypes.ToList());
         }
 
         //
-        // GET: /Event/Details/5
+        // GET: /TargetType/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Prep_Event prep_event = db.Prep_Event.Single(p => p.EventID == id);
-            if (prep_event == null)
+            TargetType targettype = db.TargetTypes.Single(t => t.TargetTypeID == id);
+            if (targettype == null)
             {
                 return HttpNotFound();
             }
-            return View(prep_event);
+            return View(targettype);
         }
 
         //
-        // GET: /Event/Create
+        // GET: /TargetType/Create
 
         public ActionResult Create()
         {
@@ -43,71 +43,71 @@ namespace PREP.Controllers
         }
 
         //
-        // POST: /Event/Create
+        // POST: /TargetType/Create
 
         [HttpPost]
-        public ActionResult Create(Prep_Event prep_event)
+        public ActionResult Create(TargetType targettype)
         {
             if (ModelState.IsValid)
             {
-                db.Prep_Event.AddObject(prep_event);
+                db.TargetTypes.AddObject(targettype);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(prep_event);
+            return View(targettype);
         }
 
         //
-        // GET: /Event/Edit/5
+        // GET: /TargetType/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Prep_Event prep_event = db.Prep_Event.Single(p => p.EventID == id);
-            if (prep_event == null)
+            TargetType targettype = db.TargetTypes.Single(t => t.TargetTypeID == id);
+            if (targettype == null)
             {
                 return HttpNotFound();
             }
-            return View(prep_event);
+            return View(targettype);
         }
 
         //
-        // POST: /Event/Edit/5
+        // POST: /TargetType/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Prep_Event prep_event)
+        public ActionResult Edit(TargetType targettype)
         {
             if (ModelState.IsValid)
             {
-                db.Prep_Event.Attach(prep_event);
-                db.ObjectStateManager.ChangeObjectState(prep_event, EntityState.Modified);
+                db.TargetTypes.Attach(targettype);
+                db.ObjectStateManager.ChangeObjectState(targettype, EntityState.Modified);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(prep_event);
+            return View(targettype);
         }
 
         //
-        // GET: /Event/Delete/5
+        // GET: /TargetType/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Prep_Event prep_event = db.Prep_Event.Single(p => p.EventID == id);
-            if (prep_event == null)
+            TargetType targettype = db.TargetTypes.Single(t => t.TargetTypeID == id);
+            if (targettype == null)
             {
                 return HttpNotFound();
             }
-            return View(prep_event);
+            return View(targettype);
         }
 
         //
-        // POST: /Event/Delete/5
+        // POST: /TargetType/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Prep_Event prep_event = db.Prep_Event.Single(p => p.EventID == id);
-            db.Prep_Event.DeleteObject(prep_event);
+            TargetType targettype = db.TargetTypes.Single(t => t.TargetTypeID == id);
+            db.TargetTypes.DeleteObject(targettype);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -19,12 +19,13 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Asset_Prep_AssetType", "Prep_AssetType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.AssetType), "Prep_Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Asset), true)]
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Asset_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.Event), "Prep_Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Asset), true)]
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Promo_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.Event), "Prep_Promo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Promo), true)]
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Target_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.Event), "Prep_Target", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Target), true)]
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Promo_Prep_PromoType", "Prep_PromoType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.PromoType), "Prep_Promo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Promo), true)]
-[assembly: EdmRelationshipAttribute("PrepContext", "FK_Prep_Target_Prep_TargetType", "Prep_TargetType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.TargetType), "Prep_Target", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Target), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Asset_Prep_AssetType", "Prep_AssetType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.AssetType), "Prep_Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Asset), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Asset_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.PrepEvent), "Prep_Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Asset), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Promo_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.PrepEvent), "Prep_Promo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Promo), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Target_Prep_Event", "Prep_Event", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.PrepEvent), "Prep_Target", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Target), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Promo_Prep_PromoType", "Prep_PromoType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.PromoType), "Prep_Promo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Promo), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "FK_Prep_Target_Prep_TargetType", "Prep_TargetType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PREP.Models.TargetType), "Prep_Target", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.Target), true)]
+[assembly: EdmRelationshipAttribute("PrepModel", "PersonPrepEvent", "Person", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PREP.Models.Person), "PrepEvent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PREP.Models.PrepEvent), true)]
 
 #endregion
 
@@ -111,18 +112,18 @@ namespace PREP.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Event> Events
+        public ObjectSet<PrepEvent> PrepEvents
         {
             get
             {
-                if ((_Events == null))
+                if ((_PrepEvents == null))
                 {
-                    _Events = base.CreateObjectSet<Event>("Events");
+                    _PrepEvents = base.CreateObjectSet<PrepEvent>("PrepEvents");
                 }
-                return _Events;
+                return _PrepEvents;
             }
         }
-        private ObjectSet<Event> _Events;
+        private ObjectSet<PrepEvent> _PrepEvents;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -187,6 +188,22 @@ namespace PREP.Models
             }
         }
         private ObjectSet<TargetType> _TargetTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Person> People
+        {
+            get
+            {
+                if ((_People == null))
+                {
+                    _People = base.CreateObjectSet<Person>("People");
+                }
+                return _People;
+            }
+        }
+        private ObjectSet<Person> _People;
 
         #endregion
 
@@ -209,11 +226,11 @@ namespace PREP.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Events EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the PrepEvents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToEvents(Event @event)
+        public void AddToPrepEvents(PrepEvent prepEvent)
         {
-            base.AddObject("Events", @event);
+            base.AddObject("PrepEvents", prepEvent);
         }
     
         /// <summary>
@@ -247,6 +264,14 @@ namespace PREP.Models
         {
             base.AddObject("TargetTypes", targetType);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the People EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPeople(Person person)
+        {
+            base.AddObject("People", person);
+        }
 
         #endregion
 
@@ -259,7 +284,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="Asset")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="Asset")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Asset : EntityObject
@@ -371,16 +396,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Asset_Prep_AssetType", "Prep_AssetType")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Asset_Prep_AssetType", "Prep_AssetType")]
         public AssetType Prep_AssetType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType").Value = value;
             }
         }
         /// <summary>
@@ -392,13 +417,13 @@ namespace PREP.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetType>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AssetType>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AssetType>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_AssetType", value);
                 }
             }
         }
@@ -409,16 +434,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Asset_Prep_Event", "Prep_Event")]
-        public Event Prep_Event
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Asset_Prep_Event", "Prep_Event")]
+        public PrepEvent Prep_Event
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Event").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Event").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Event").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Event").Value = value;
             }
         }
         /// <summary>
@@ -426,17 +451,17 @@ namespace PREP.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Event> Prep_EventReference
+        public EntityReference<PrepEvent> Prep_EventReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Event");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Event");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Event>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Event", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrepEvent>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Event", value);
                 }
             }
         }
@@ -448,7 +473,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="AssetType")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="AssetType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class AssetType : EntityObject
@@ -558,18 +583,18 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Asset_Prep_AssetType", "Prep_Asset")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Asset_Prep_AssetType", "Prep_Asset")]
         public EntityCollection<Asset> Prep_Asset
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_Asset");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_Asset");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("PrepContext.FK_Prep_Asset_Prep_AssetType", "Prep_Asset", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("PrepModel.FK_Prep_Asset_Prep_AssetType", "Prep_Asset", value);
                 }
             }
         }
@@ -581,28 +606,303 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="Event")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="Person")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Event : EntityObject
+    public partial class Person : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Event object.
+        /// Create a new Person object.
+        /// </summary>
+        /// <param name="appEntityID">Initial value of the AppEntityID property.</param>
+        public static Person CreatePerson(global::System.Int32 appEntityID)
+        {
+            Person person = new Person();
+            person.AppEntityID = appEntityID;
+            return person;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppEntityID
+        {
+            get
+            {
+                return _AppEntityID;
+            }
+            set
+            {
+                if (_AppEntityID != value)
+                {
+                    OnAppEntityIDChanging(value);
+                    ReportPropertyChanging("AppEntityID");
+                    _AppEntityID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("AppEntityID");
+                    OnAppEntityIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _AppEntityID;
+        partial void OnAppEntityIDChanging(global::System.Int32 value);
+        partial void OnAppEntityIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PersonTypeID
+        {
+            get
+            {
+                return _PersonTypeID;
+            }
+            set
+            {
+                OnPersonTypeIDChanging(value);
+                ReportPropertyChanging("PersonTypeID");
+                _PersonTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PersonTypeID");
+                OnPersonTypeIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PersonTypeID;
+        partial void OnPersonTypeIDChanging(Nullable<global::System.Int32> value);
+        partial void OnPersonTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FirstName
+        {
+            get
+            {
+                return _FirstName;
+            }
+            set
+            {
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+            }
+        }
+        private global::System.String _FirstName;
+        partial void OnFirstNameChanging(global::System.String value);
+        partial void OnFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MiddleName
+        {
+            get
+            {
+                return _MiddleName;
+            }
+            set
+            {
+                OnMiddleNameChanging(value);
+                ReportPropertyChanging("MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MiddleName");
+                OnMiddleNameChanged();
+            }
+        }
+        private global::System.String _MiddleName;
+        partial void OnMiddleNameChanging(global::System.String value);
+        partial void OnMiddleNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Suffix
+        {
+            get
+            {
+                return _Suffix;
+            }
+            set
+            {
+                OnSuffixChanging(value);
+                ReportPropertyChanging("Suffix");
+                _Suffix = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Suffix");
+                OnSuffixChanged();
+            }
+        }
+        private global::System.String _Suffix;
+        partial void OnSuffixChanging(global::System.String value);
+        partial void OnSuffixChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> rowguid
+        {
+            get
+            {
+                return _rowguid;
+            }
+            set
+            {
+                OnrowguidChanging(value);
+                ReportPropertyChanging("rowguid");
+                _rowguid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("rowguid");
+                OnrowguidChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _rowguid;
+        partial void OnrowguidChanging(Nullable<global::System.Guid> value);
+        partial void OnrowguidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ModifiedDate;
+        partial void OnModifiedDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnModifiedDateChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "PersonPrepEvent", "PrepEvent")]
+        public EntityCollection<PrepEvent> PrepEvent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PrepEvent>("PrepModel.PersonPrepEvent", "PrepEvent");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PrepEvent>("PrepModel.PersonPrepEvent", "PrepEvent", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="PrepEvent")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PrepEvent : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PrepEvent object.
         /// </summary>
         /// <param name="eventID">Initial value of the EventID property.</param>
         /// <param name="subject">Initial value of the Subject property.</param>
         /// <param name="start">Initial value of the Start property.</param>
         /// <param name="isFullDay">Initial value of the IsFullDay property.</param>
-        public static Event CreateEvent(global::System.Int32 eventID, global::System.String subject, global::System.DateTime start, global::System.Boolean isFullDay)
+        public static PrepEvent CreatePrepEvent(global::System.Int32 eventID, global::System.String subject, global::System.DateTime start, global::System.Boolean isFullDay)
         {
-            Event @event = new Event();
-            @event.EventID = eventID;
-            @event.Subject = subject;
-            @event.Start = start;
-            @event.IsFullDay = isFullDay;
-            return @event;
+            PrepEvent prepEvent = new PrepEvent();
+            prepEvent.EventID = eventID;
+            prepEvent.Subject = subject;
+            prepEvent.Start = start;
+            prepEvent.IsFullDay = isFullDay;
+            return prepEvent;
         }
 
         #endregion
@@ -959,18 +1259,18 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Asset_Prep_Event", "Prep_Asset")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Asset_Prep_Event", "Prep_Asset")]
         public EntityCollection<Asset> Prep_Asset
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Asset");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Asset");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("PrepContext.FK_Prep_Asset_Prep_Event", "Prep_Asset", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("PrepModel.FK_Prep_Asset_Prep_Event", "Prep_Asset", value);
                 }
             }
         }
@@ -981,18 +1281,18 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Promo_Prep_Event", "Prep_Promo")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Promo_Prep_Event", "Prep_Promo")]
         public EntityCollection<Promo> Prep_Promo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Promo>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Promo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Promo>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Promo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Promo>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Promo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Promo>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Promo", value);
                 }
             }
         }
@@ -1003,18 +1303,56 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Target_Prep_Event", "Prep_Target")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Target_Prep_Event", "Prep_Target")]
         public EntityCollection<Target> Prep_Target
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Target>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Target");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Target>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Target");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Target>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Target", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Target>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Target", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "PersonPrepEvent", "Person")]
+        public Person Person
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("PrepModel.PersonPrepEvent", "Person").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("PrepModel.PersonPrepEvent", "Person").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Person> PersonReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Person>("PrepModel.PersonPrepEvent", "Person");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Person>("PrepModel.PersonPrepEvent", "Person", value);
                 }
             }
         }
@@ -1026,7 +1364,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="Promo")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="Promo")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Promo : EntityObject
@@ -1138,16 +1476,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Promo_Prep_Event", "Prep_Event")]
-        public Event Prep_Event
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Promo_Prep_Event", "Prep_Event")]
+        public PrepEvent Prep_Event
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Event").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Event").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Event").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Event").Value = value;
             }
         }
         /// <summary>
@@ -1155,17 +1493,17 @@ namespace PREP.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Event> Prep_EventReference
+        public EntityReference<PrepEvent> Prep_EventReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Event");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Event");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Event>("PrepContext.FK_Prep_Promo_Prep_Event", "Prep_Event", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrepEvent>("PrepModel.FK_Prep_Promo_Prep_Event", "Prep_Event", value);
                 }
             }
         }
@@ -1176,16 +1514,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Promo_Prep_PromoType", "Prep_PromoType")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Promo_Prep_PromoType", "Prep_PromoType")]
         public PromoType Prep_PromoType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType").Value = value;
             }
         }
         /// <summary>
@@ -1197,13 +1535,13 @@ namespace PREP.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PromoType>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PromoType>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PromoType>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_PromoType", value);
                 }
             }
         }
@@ -1215,7 +1553,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="PromoType")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="PromoType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class PromoType : EntityObject
@@ -1301,18 +1639,18 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Promo_Prep_PromoType", "Prep_Promo")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Promo_Prep_PromoType", "Prep_Promo")]
         public EntityCollection<Promo> Prep_Promo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Promo>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_Promo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Promo>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_Promo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Promo>("PrepContext.FK_Prep_Promo_Prep_PromoType", "Prep_Promo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Promo>("PrepModel.FK_Prep_Promo_Prep_PromoType", "Prep_Promo", value);
                 }
             }
         }
@@ -1324,7 +1662,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="Target")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="Target")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Target : EntityObject
@@ -1436,16 +1774,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Target_Prep_Event", "Prep_Event")]
-        public Event Prep_Event
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Target_Prep_Event", "Prep_Event")]
+        public PrepEvent Prep_Event
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Event").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Event").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Event").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Event").Value = value;
             }
         }
         /// <summary>
@@ -1453,17 +1791,17 @@ namespace PREP.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Event> Prep_EventReference
+        public EntityReference<PrepEvent> Prep_EventReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Event>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Event");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrepEvent>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Event");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Event>("PrepContext.FK_Prep_Target_Prep_Event", "Prep_Event", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrepEvent>("PrepModel.FK_Prep_Target_Prep_Event", "Prep_Event", value);
                 }
             }
         }
@@ -1474,16 +1812,16 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Target_Prep_TargetType", "Prep_TargetType")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Target_Prep_TargetType", "Prep_TargetType")]
         public TargetType Prep_TargetType
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_TargetType").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_TargetType").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_TargetType").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_TargetType").Value = value;
             }
         }
         /// <summary>
@@ -1495,13 +1833,13 @@ namespace PREP.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_TargetType");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TargetType>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_TargetType");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TargetType>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_TargetType", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TargetType>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_TargetType", value);
                 }
             }
         }
@@ -1513,7 +1851,7 @@ namespace PREP.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PrepContext", Name="TargetType")]
+    [EdmEntityTypeAttribute(NamespaceName="PrepModel", Name="TargetType")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class TargetType : EntityObject
@@ -1599,18 +1937,18 @@ namespace PREP.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrepContext", "FK_Prep_Target_Prep_TargetType", "Prep_Target")]
+        [EdmRelationshipNavigationPropertyAttribute("PrepModel", "FK_Prep_Target_Prep_TargetType", "Prep_Target")]
         public EntityCollection<Target> Prep_Target
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Target>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_Target");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Target>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_Target");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Target>("PrepContext.FK_Prep_Target_Prep_TargetType", "Prep_Target", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Target>("PrepModel.FK_Prep_Target_Prep_TargetType", "Prep_Target", value);
                 }
             }
         }

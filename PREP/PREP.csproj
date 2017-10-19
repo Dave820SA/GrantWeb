@@ -126,7 +126,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\AssetTypeController.cs" />
+    <Compile Include="Controllers\PrepEventController.cs" />
+    <Compile Include="Controllers\PromoTypeController.cs" />
+    <Compile Include="Controllers\TargetTypeController.cs" />
     <Compile Include="Models\CalendarModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,11 +140,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PrepModel.Designer.cs">
+    <Compile Include="Models\PrepDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrepModel.edmx</DependentUpon>
+      <DependentUpon>PrepDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PrepMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +212,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Check_Round.png" />
+    <Content Include="Images\red-minus.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
@@ -243,19 +249,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -273,19 +266,38 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CalendarModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="Models\PrepModel.edmx">
+    <EntityDeploy Include="Models\PrepDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PrepModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PrepDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Shared\_Alternate.cshtml" />
     <Content Include="Views\Calendar\_ViewStart.cshtml" />
-    <Content Include="Views\Event\Index.cshtml" />
-    <Content Include="Views\Event\Details.cshtml" />
-    <Content Include="Views\Event\Create.cshtml" />
-    <Content Include="Views\Event\Edit.cshtml" />
-    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\PrepEvent\Index.cshtml" />
+    <Content Include="Views\PrepEvent\Details.cshtml" />
+    <Content Include="Views\PrepEvent\Create.cshtml" />
+    <Content Include="Views\PrepEvent\Edit.cshtml" />
+    <Content Include="Views\PrepEvent\Delete.cshtml" />
+    <Content Include="Views\PrepEvent\_ViewStart.cshtml" />
+    <Content Include="Views\PromoType\Index.cshtml" />
+    <Content Include="Views\PromoType\Details.cshtml" />
+    <Content Include="Views\PromoType\Create.cshtml" />
+    <Content Include="Views\PromoType\Edit.cshtml" />
+    <Content Include="Views\PromoType\Delete.cshtml" />
+    <Content Include="Views\PromoType\_ViewStart.cshtml" />
+    <Content Include="Views\AssetType\Index.cshtml" />
+    <Content Include="Views\AssetType\Details.cshtml" />
+    <Content Include="Views\AssetType\Create.cshtml" />
+    <Content Include="Views\AssetType\Edit.cshtml" />
+    <Content Include="Views\AssetType\Delete.cshtml" />
+    <Content Include="Views\AssetType\_ViewStart.cshtml" />
+    <Content Include="Views\TargetType\Index.cshtml" />
+    <Content Include="Views\TargetType\Details.cshtml" />
+    <Content Include="Views\TargetType\Create.cshtml" />
+    <Content Include="Views\TargetType\Edit.cshtml" />
+    <Content Include="Views\TargetType\Delete.cshtml" />
+    <Content Include="Views\TargetType\_ViewStart.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

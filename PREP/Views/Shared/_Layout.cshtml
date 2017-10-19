@@ -33,8 +33,19 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="~/Home/Index"><span class="fa fa-home fa-fw"></span>Home</a></li>
-                            <li class="active"><a href="~/Event/Index"><span class="fa fa-home fa-fw"></span>Event List</a></li>
-                            <li><a href="~/Calendar/Index"><i class="fa fa-bars"></i>&nbsp;Event Calendar </a></li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">PREP/Add/Edit <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/PrepEvent/Index">Prep Events</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="~/PromoType/Index">Promo Item</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="~/AssetType/Index">Asset Items</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="~/TargetType/Index">Target Audience</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="~/Calendar/Index"><i class="fa fa-calendar-check-o"></i>&nbsp;Event Calendar </a></li>
                             <li><a href="~/Home/Contact"><i class="fa fa-phone"></i>&nbsp;Contact</a></li>
               
                         </ul>

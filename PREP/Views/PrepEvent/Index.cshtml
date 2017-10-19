@@ -1,0 +1,222 @@
+﻿@model IEnumerable<PREP.Models.PrepEvent>
+
+@{
+    ViewBag.Title = "PREP Events";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <h3>PREP <small> Events</small></h3>
+    </div>
+    @*<div class="col-md-5">
+        <div style="float: right">
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            { 
+                <h4>
+                    Sort By:
+                </h4>
+               
+                @Html.DropDownList("Value", new SelectList(ViewBag.SortBy, "Value", "Text"), new { @class = "form-control", onchange = "this.form.submit();" })
+            }
+        </div>
+    </div>*@
+</div>
+
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 ">
+                  
+            <table class="table table-condensed table-hover">
+                <tr>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.Subject)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Start)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.End)
+                    </th>
+                    <th>
+                        Entered By
+                        @*@Html.DisplayNameFor(model => model.Person.FirstName & " " & model.Person.LastName)*@
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsFullDay)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThemeColor)
+                    </th>
+                    
+                    <th>
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    @*@Html.HiddenFor(modelItem => item.EventId)*@
+                                        <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subject)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Start)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.End)
+                        </td>
+
+                        <td>
+                            @*@(String.Format("{0} {1} #{2}", item.Person.FirstName, item.Person.LastName, item.Person.User_User.Badge))*@
+                            @{
+                                //string enteredby = item.Person.FirstName;
+                                if (item.Person.FirstName != null && String.IsNullOrEmpty(item.Person.FirstName) == false)
+                                    {
+                                        @(String.Format("{0} {1}", item.Person.FirstName, item.Person.LastName))
+                                    }
+                                else
+                                {
+                                        @(String.Format("{0}", "Unknown"))
+                                } 
+                                
+                            }
+                            
+                        </td>
+                      
+                        <td style="max-height: 10px">
+                            @{
+                                string approve = (item.IsFullDay).ToString();
+                                if (approve == "True")
+                                {
+                                            <img src="~/Images/Check_Round.png" alt="" class="image_background" />
+                                }
+                                else
+                                {
+                                            <img src="~/Images/red-minus.png" alt="" class="image_background" />
+                                } 
+                              }
+                        </td>
+                        
+                        <th>
+                            @Html.DisplayFor(modelItem => item.ThemeColor)
+                        </th>
+                        <td>
+                            <a href="@Url.Action("Details", "PrepEvent", new { id = item.EventID })" class="btn btn-success btn-xs">
+                                Details <i class="fa fa-list" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@*
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Presentation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exposure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attend)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnteredBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnteredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFullDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThemeColor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Presentation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exposure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComEvent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attend)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnteredBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnteredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFullDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThemeColor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EventID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
+        </td>
+    </tr>
+}
+
+</table>*@
