@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PrepContext.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PrepContextStoreContainer">
+          <EntitySet Name="Prep_Asset" EntityType="PrepContext.Store.Prep_Asset" store:Type="Tables" Schema="dbo" Table="Prep.Asset" />
+          <EntitySet Name="Prep_AssetType" EntityType="PrepContext.Store.Prep_AssetType" store:Type="Tables" Schema="dbo" Table="Prep.AssetType" />
+          <EntitySet Name="Prep_Event" EntityType="PrepContext.Store.Prep_Event" store:Type="Tables" Schema="dbo" Table="Prep.Event" />
+          <EntitySet Name="Prep_Promo" EntityType="PrepContext.Store.Prep_Promo" store:Type="Tables" Schema="dbo" Table="Prep.Promo" />
+          <EntitySet Name="Prep_PromoType" EntityType="PrepContext.Store.Prep_PromoType" store:Type="Tables" Schema="dbo" Table="Prep.PromoType" />
+          <EntitySet Name="Prep_Target" EntityType="PrepContext.Store.Prep_Target" store:Type="Tables" Schema="dbo" Table="Prep.Target" />
+          <EntitySet Name="Prep_TargetType" EntityType="PrepContext.Store.Prep_TargetType" store:Type="Tables" Schema="dbo" Table="Prep.TargetType" />
+          <AssociationSet Name="FK_Prep_Asset_Prep_AssetType" Association="PrepContext.Store.FK_Prep_Asset_Prep_AssetType">
+            <End Role="Prep_AssetType" EntitySet="Prep_AssetType" />
+            <End Role="Prep_Asset" EntitySet="Prep_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Asset_Prep_Event" Association="PrepContext.Store.FK_Prep_Asset_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Prep_Event" />
+            <End Role="Prep_Asset" EntitySet="Prep_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Promo_Prep_Event" Association="PrepContext.Store.FK_Prep_Promo_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Prep_Event" />
+            <End Role="Prep_Promo" EntitySet="Prep_Promo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Promo_Prep_PromoType" Association="PrepContext.Store.FK_Prep_Promo_Prep_PromoType">
+            <End Role="Prep_PromoType" EntitySet="Prep_PromoType" />
+            <End Role="Prep_Promo" EntitySet="Prep_Promo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Target_Prep_Event" Association="PrepContext.Store.FK_Prep_Target_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Prep_Event" />
+            <End Role="Prep_Target" EntitySet="Prep_Target" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Target_Prep_TargetType" Association="PrepContext.Store.FK_Prep_Target_Prep_TargetType">
+            <End Role="Prep_TargetType" EntitySet="Prep_TargetType" />
+            <End Role="Prep_Target" EntitySet="Prep_Target" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Prep_Asset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="AssetTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prep_AssetType">
+          <Key>
+            <PropertyRef Name="AssetTypeID" />
+          </Key>
+          <Property Name="AssetTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Asset" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PicturePath" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Prep_Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" />
+          <Property Name="Presentation" Type="int" />
+          <Property Name="Exposure" Type="int" />
+          <Property Name="ComEvent" Type="int" />
+          <Property Name="Attend" Type="int" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="EnteredBy" Type="int" />
+          <Property Name="EnteredDate" Type="datetime" />
+          <Property Name="IsFullDay" Type="bit" Nullable="false" />
+          <Property Name="ThemeColor" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Prep_Promo">
+          <Key>
+            <PropertyRef Name="PromoID" />
+          </Key>
+          <Property Name="PromoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prep_PromoType">
+          <Key>
+            <PropertyRef Name="PromoTypeID" />
+          </Key>
+          <Property Name="PromoTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Prep_Target">
+          <Key>
+            <PropertyRef Name="TargetID" />
+          </Key>
+          <Property Name="TargetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prep_TargetType">
+          <Key>
+            <PropertyRef Name="TargetTypeID" />
+          </Key>
+          <Property Name="TargetTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Prep_Asset_Prep_AssetType">
+          <End Role="Prep_AssetType" Type="PrepContext.Store.Prep_AssetType" Multiplicity="1" />
+          <End Role="Prep_Asset" Type="PrepContext.Store.Prep_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_AssetType">
+              <PropertyRef Name="AssetTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Asset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Asset_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Store.Prep_Event" Multiplicity="1" />
+          <End Role="Prep_Asset" Type="PrepContext.Store.Prep_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Asset">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Promo_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Store.Prep_Event" Multiplicity="1" />
+          <End Role="Prep_Promo" Type="PrepContext.Store.Prep_Promo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Promo">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Promo_Prep_PromoType">
+          <End Role="Prep_PromoType" Type="PrepContext.Store.Prep_PromoType" Multiplicity="1" />
+          <End Role="Prep_Promo" Type="PrepContext.Store.Prep_Promo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_PromoType">
+              <PropertyRef Name="PromoTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Promo">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Target_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Store.Prep_Event" Multiplicity="1" />
+          <End Role="Prep_Target" Type="PrepContext.Store.Prep_Target" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Target">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Target_Prep_TargetType">
+          <End Role="Prep_TargetType" Type="PrepContext.Store.Prep_TargetType" Multiplicity="1" />
+          <End Role="Prep_Target" Type="PrepContext.Store.Prep_Target" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_TargetType">
+              <PropertyRef Name="TargetTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Target">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrepContext" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PrepEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assets" EntityType="PrepContext.Asset" />
+          <EntitySet Name="AssetTypes" EntityType="PrepContext.AssetType" />
+          <EntitySet Name="Events" EntityType="PrepContext.Event" />
+          <EntitySet Name="Promoes" EntityType="PrepContext.Promo" />
+          <EntitySet Name="PromoTypes" EntityType="PrepContext.PromoType" />
+          <EntitySet Name="Targets" EntityType="PrepContext.Target" />
+          <EntitySet Name="TargetTypes" EntityType="PrepContext.TargetType" />
+          <AssociationSet Name="FK_Prep_Asset_Prep_AssetType" Association="PrepContext.FK_Prep_Asset_Prep_AssetType">
+            <End Role="Prep_AssetType" EntitySet="AssetTypes" />
+            <End Role="Prep_Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Asset_Prep_Event" Association="PrepContext.FK_Prep_Asset_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Events" />
+            <End Role="Prep_Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Promo_Prep_Event" Association="PrepContext.FK_Prep_Promo_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Events" />
+            <End Role="Prep_Promo" EntitySet="Promoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Target_Prep_Event" Association="PrepContext.FK_Prep_Target_Prep_Event">
+            <End Role="Prep_Event" EntitySet="Events" />
+            <End Role="Prep_Target" EntitySet="Targets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Promo_Prep_PromoType" Association="PrepContext.FK_Prep_Promo_Prep_PromoType">
+            <End Role="Prep_PromoType" EntitySet="PromoTypes" />
+            <End Role="Prep_Promo" EntitySet="Promoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prep_Target_Prep_TargetType" Association="PrepContext.FK_Prep_Target_Prep_TargetType">
+            <End Role="Prep_TargetType" EntitySet="TargetTypes" />
+            <End Role="Prep_Target" EntitySet="Targets" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="AssetTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prep_AssetType" Relationship="PrepContext.FK_Prep_Asset_Prep_AssetType" FromRole="Prep_Asset" ToRole="Prep_AssetType" />
+          <NavigationProperty Name="Prep_Event" Relationship="PrepContext.FK_Prep_Asset_Prep_Event" FromRole="Prep_Asset" ToRole="Prep_Event" />
+        </EntityType>
+        <EntityType Name="AssetType">
+          <Key>
+            <PropertyRef Name="AssetTypeID" />
+          </Key>
+          <Property Name="AssetTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asset" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PicturePath" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Prep_Asset" Relationship="PrepContext.FK_Prep_Asset_Prep_AssetType" FromRole="Prep_AssetType" ToRole="Prep_Asset" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" />
+          <Property Name="Presentation" Type="Int32" />
+          <Property Name="Exposure" Type="Int32" />
+          <Property Name="ComEvent" Type="Int32" />
+          <Property Name="Attend" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EnteredBy" Type="Int32" />
+          <Property Name="EnteredDate" Type="DateTime" />
+          <Property Name="IsFullDay" Type="Boolean" Nullable="false" />
+          <Property Name="ThemeColor" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Prep_Asset" Relationship="PrepContext.FK_Prep_Asset_Prep_Event" FromRole="Prep_Event" ToRole="Prep_Asset" />
+          <NavigationProperty Name="Prep_Promo" Relationship="PrepContext.FK_Prep_Promo_Prep_Event" FromRole="Prep_Event" ToRole="Prep_Promo" />
+          <NavigationProperty Name="Prep_Target" Relationship="PrepContext.FK_Prep_Target_Prep_Event" FromRole="Prep_Event" ToRole="Prep_Target" />
+        </EntityType>
+        <EntityType Name="Promo">
+          <Key>
+            <PropertyRef Name="PromoID" />
+          </Key>
+          <Property Name="PromoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prep_Event" Relationship="PrepContext.FK_Prep_Promo_Prep_Event" FromRole="Prep_Promo" ToRole="Prep_Event" />
+          <NavigationProperty Name="Prep_PromoType" Relationship="PrepContext.FK_Prep_Promo_Prep_PromoType" FromRole="Prep_Promo" ToRole="Prep_PromoType" />
+        </EntityType>
+        <EntityType Name="PromoType">
+          <Key>
+            <PropertyRef Name="PromoTypeID" />
+          </Key>
+          <Property Name="PromoTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Prep_Promo" Relationship="PrepContext.FK_Prep_Promo_Prep_PromoType" FromRole="Prep_PromoType" ToRole="Prep_Promo" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="TargetID" />
+          </Key>
+          <Property Name="TargetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prep_Event" Relationship="PrepContext.FK_Prep_Target_Prep_Event" FromRole="Prep_Target" ToRole="Prep_Event" />
+          <NavigationProperty Name="Prep_TargetType" Relationship="PrepContext.FK_Prep_Target_Prep_TargetType" FromRole="Prep_Target" ToRole="Prep_TargetType" />
+        </EntityType>
+        <EntityType Name="TargetType">
+          <Key>
+            <PropertyRef Name="TargetTypeID" />
+          </Key>
+          <Property Name="TargetTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Prep_Target" Relationship="PrepContext.FK_Prep_Target_Prep_TargetType" FromRole="Prep_TargetType" ToRole="Prep_Target" />
+        </EntityType>
+        <Association Name="FK_Prep_Asset_Prep_AssetType">
+          <End Role="Prep_AssetType" Type="PrepContext.AssetType" Multiplicity="1" />
+          <End Role="Prep_Asset" Type="PrepContext.Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_AssetType">
+              <PropertyRef Name="AssetTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Asset">
+              <PropertyRef Name="AssetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Asset_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Event" Multiplicity="1" />
+          <End Role="Prep_Asset" Type="PrepContext.Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Asset">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Promo_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Event" Multiplicity="1" />
+          <End Role="Prep_Promo" Type="PrepContext.Promo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Promo">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Target_Prep_Event">
+          <End Role="Prep_Event" Type="PrepContext.Event" Multiplicity="1" />
+          <End Role="Prep_Target" Type="PrepContext.Target" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_Event">
+              <PropertyRef Name="EventID" />
+            </Principal>
+            <Dependent Role="Prep_Target">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Promo_Prep_PromoType">
+          <End Role="Prep_PromoType" Type="PrepContext.PromoType" Multiplicity="1" />
+          <End Role="Prep_Promo" Type="PrepContext.Promo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_PromoType">
+              <PropertyRef Name="PromoTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Promo">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prep_Target_Prep_TargetType">
+          <End Role="Prep_TargetType" Type="PrepContext.TargetType" Multiplicity="1" />
+          <End Role="Prep_Target" Type="PrepContext.Target" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prep_TargetType">
+              <PropertyRef Name="TargetTypeID" />
+            </Principal>
+            <Dependent Role="Prep_Target">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrepContextStoreContainer" CdmEntityContainer="PrepEntities">
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="PrepContext.Asset">
+              <MappingFragment StoreEntitySet="Prep_Asset">
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssetTypes">
+            <EntityTypeMapping TypeName="PrepContext.AssetType">
+              <MappingFragment StoreEntitySet="Prep_AssetType">
+                <ScalarProperty Name="AssetTypeID" ColumnName="AssetTypeID" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="PrepContext.Event">
+              <MappingFragment StoreEntitySet="Prep_Event">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Presentation" ColumnName="Presentation" />
+                <ScalarProperty Name="Exposure" ColumnName="Exposure" />
+                <ScalarProperty Name="ComEvent" ColumnName="ComEvent" />
+                <ScalarProperty Name="Attend" ColumnName="Attend" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EnteredBy" ColumnName="EnteredBy" />
+                <ScalarProperty Name="EnteredDate" ColumnName="EnteredDate" />
+                <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+                <ScalarProperty Name="ThemeColor" ColumnName="ThemeColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promoes">
+            <EntityTypeMapping TypeName="PrepContext.Promo">
+              <MappingFragment StoreEntitySet="Prep_Promo">
+                <ScalarProperty Name="PromoID" ColumnName="PromoID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromoTypes">
+            <EntityTypeMapping TypeName="PrepContext.PromoType">
+              <MappingFragment StoreEntitySet="Prep_PromoType">
+                <ScalarProperty Name="PromoTypeID" ColumnName="PromoTypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Targets">
+            <EntityTypeMapping TypeName="PrepContext.Target">
+              <MappingFragment StoreEntitySet="Prep_Target">
+                <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TargetTypes">
+            <EntityTypeMapping TypeName="PrepContext.TargetType">
+              <MappingFragment StoreEntitySet="Prep_TargetType">
+                <ScalarProperty Name="TargetTypeID" ColumnName="TargetTypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="PrepModel">
+        <EntityTypeShape EntityType="PrepContext.Asset" Width="1.5" PointX="4.5" PointY="2.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.AssetType" Width="1.5" PointX="6.75" PointY="3.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.Event" Width="1.5" PointX="0.625" PointY="0.5" Height="4.2879036458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.Promo" Width="1.5" PointX="4.625" PointY="0.5" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.PromoType" Width="1.5" PointX="7.25" PointY="0.625" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.Target" Width="1.5" PointX="4.25" PointY="5" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrepContext.TargetType" Width="1.5" PointX="6.875" PointY="5.5" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="PrepContext.FK_Prep_Asset_Prep_AssetType" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.9901432291666667" />
+          <ConnectorPoint PointX="6" PointY="3.9901432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrepContext.FK_Prep_Asset_Prep_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="3.7401432291666667" />
+          <ConnectorPoint PointX="4.260416666666667" PointY="3.7401432291666663" />
+          <ConnectorPoint PointX="4.427083333333333" PointY="3.7401432291666667" />
+          <ConnectorPoint PointX="4.5" PointY="3.7401432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrepContext.FK_Prep_Promo_Prep_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="4.625" PointY="1.4901432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrepContext.FK_Prep_Target_Prep_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.125" PointY="2.6151432291666667" />
+          <ConnectorPoint PointX="4.34375" PointY="2.6151432291666667" />
+          <ConnectorPoint PointX="4.34375" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrepContext.FK_Prep_Promo_Prep_PromoType" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="1.4228417968749998" />
+          <ConnectorPoint PointX="6.125" PointY="1.4228417968749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="PrepContext.FK_Prep_Target_Prep_TargetType" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.875" PointY="6.2401432291666676" />
+          <ConnectorPoint PointX="5.75" PointY="6.2401432291666676" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,106 @@
+﻿@model PREP.Models.Prep_Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Prep_Event</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Start)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Start)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.End)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.End)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Presentation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Presentation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Exposure)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Exposure)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ComEvent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ComEvent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Attend)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Attend)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EnteredBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EnteredBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EnteredDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EnteredDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsFullDay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsFullDay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ThemeColor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThemeColor)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.EventID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

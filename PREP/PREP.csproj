@@ -126,7 +126,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="CalendarModel.Designer.cs">
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Models\CalendarModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CalendarModel.edmx</DependentUpon>
@@ -135,6 +136,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrepModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrepModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -261,17 +267,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="CalendarModel.edmx">
+    <EntityDeploy Include="Models\CalendarModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CalendarModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\PrepModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PrepModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Shared\_Alternate.cshtml" />
     <Content Include="Views\Calendar\_ViewStart.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
