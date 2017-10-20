@@ -21,7 +21,6 @@
                         @Html.HiddenFor(model => model.EventID)
                         <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.Subject, new { @class = "control-label" })</strong>
                         <div>
-                            
                             @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
@@ -32,21 +31,51 @@
                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control", cols = "20", rows = "7" })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
-
                     <div class="form-group col-xs-12">
                         <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.Start, new { @class = "control-label" })</strong>
-              
-                        @*@Html.TextBoxFor(model => model.Start, new { @class = "form-control" })*@
-                        @Html.TextBoxFor(model => model.Start, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
-                        @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+                        <div class='input-group date' id='datetimepicker1'>
+                            @Html.TextBoxFor(model => model.Start, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+                            @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+                            <span class="input-group-addon"><span class="fa fa-calendar" data-toggle="tooltip" title="Click to see calendar!"></span></span>
+                        </div>
                     </div>
 
                     <div class="form-group col-xs-12">
                         <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.End, new { @class = "control-label" })</strong>
+                        <div class='input-group date' id='datetimepicker2'>
+                            @Html.TextBoxFor(model => model.End, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+                            @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
+                            <span class="input-group-addon"><span class="fa fa-calendar" data-toggle="tooltip" title="Click to see calendar!"></span></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                    <div class="col-md-3">
+                        <strong style="font-size: .8em; color: Orange">@Html.LabelFor(model => model.Presentation, new { @class = "control-label" })</strong>
+                        <div>
+                            @Html.EditorFor(model => model.Presentation, new { @class = "form-control" })
+                        </div>
+                        @*@Html.ValidationMessageFor(model => model.Presentation, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col-md-1">
+                    &nbsp;
+                    </div>
+                    <div class="col-md-3">
+                        <strong style="font-size: .8em; color: Orange">@Html.LabelFor(model => model.Exposure, new { @class = "control-label" })</strong>
+                        <div>
+                            @Html.EditorFor(model => model.Exposure, new { @class = "form-control", style = "width:50px" })
+                        </div>
+                        @*@Html.ValidationMessageFor(model => model.Presentation, "", new { @class = "text-danger" })*@
+                    </div>
+                    </div>
+                    
+
+                    @*<div class="form-group col-xs-12">
+                        <strong style="font-size: 1.2em; color: Orange">@Html.LabelFor(model => model.End, new { @class = "control-label" })</strong>
               
                         @Html.TextBoxFor(model => model.End, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
-                    </div>
+                    </div>*@
 
                     @*<div class="form-group col-xs-12">
                         <strong style="font-size: 1.2em">@Html.LabelFor(model => model.StartDate, new { @class = "control-label" })</strong>
@@ -74,11 +103,31 @@
    <script type="text/javascript">
        $(document).ready(function () {
 
-        $(function () { // will trigger when the document is ready
-           $('.datepicker').datepicker(); //Initialise any date pickers
+           $('[data-toggle="tooltip"]').tooltip(); 
+
+
        });
 
+       $(function () {
+           $('#datetimepicker1').datetimepicker({
+               icons: {
+                   time: "fa fa-clock-o",
+                   date: "fa fa-calendar",
+                   up: "fa fa-arrow-up",
+                   down: "fa fa-arrow-down"
+               }
+           });
+       });
 
+       $(function () {
+           $('#datetimepicker2').datetimepicker({
+               icons: {
+                   time: "fa fa-clock-o",
+                   date: "fa fa-calendar",
+                   up: "fa fa-arrow-up",
+                   down: "fa fa-arrow-down"
+               }
+           });
        });
 
 
@@ -98,37 +147,7 @@
 
         @Html.HiddenFor(model => model.EventID)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Subject)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Subject)
-            @Html.ValidationMessageFor(model => model.Subject)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Start)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Start)
-            @Html.ValidationMessageFor(model => model.Start)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.End)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.End)
-            @Html.ValidationMessageFor(model => model.End)
-        </div>
+        
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Presentation)
