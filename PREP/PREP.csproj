@@ -149,6 +149,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
@@ -270,6 +272,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PrepDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Content\bootstrap-theme.css.map" />
+    <None Include="Content\bootstrap-theme.min.css.map" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Shared\_Alternate.cshtml" />

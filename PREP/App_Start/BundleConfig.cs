@@ -56,7 +56,12 @@ namespace PREP
             bundles.Add(new StyleBundle("~/Content/fullcalendarprint", "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.print.css"));
 
             //bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/Slate.css"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+            //bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                        "~/Content/Slate.css",
+                        "~/Content/bootstrap-theme.min.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/fullcalendar").Include("~/Content/fullcalendar.css"));
